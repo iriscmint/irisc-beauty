@@ -959,8 +959,21 @@
     document.getElementById('bookingForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
 
-    // You can wire up to Google Sheets / backend here
-    console.log('Booking:', { name, phone, date, time: time.value });
+    const formData = {
+      name: name,
+      phone: phone,
+      age: document.getElementById('age').value,
+      date: date,
+      time: time.value,
+      concern: document.getElementById('concern').value
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbwEdtIjcve3p9DY45IfTB01XrUzrFi_BOWDN30_jzu9j2xAvZTa4shq78wdmIF_tuiqpw/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
   }
 </script>
 </body>
