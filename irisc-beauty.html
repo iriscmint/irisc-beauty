@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRISC Styling Beauty｜MicrosonPen 無針埋線緊緻療程</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #7ec8a4;
+    --mint-light: #b2ddc8;
+    --mint-pale: #e8f5ef;
+    --mint-deep: #4a9e7a;
+    --sage: #a8c5b5;
+    --cream: #fafaf8;
+    --warm-white: #f7f6f2;
+    --charcoal: #2c2c2c;
+    --text-mid: #5a5a5a;
+    --text-light: #8a8a8a;
+    --gold: #c9a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #f0f9f4 0%, #e8f5ef 40%, #d4ede2 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 60px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(126,200,164,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(126,200,164,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .brand-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--mint-deep);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-logo {
+    width: 160px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--mint);
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 8vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--mint-deep);
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(15px, 3.5vw, 20px);
+    font-weight: 300;
+    color: var(--text-mid);
+    text-align: center;
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.75s forwards;
+  }
+
+  .hero-price-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 36px;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(126,200,164,0.2);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.9s forwards;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-price-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mint-light), var(--mint-deep), var(--mint-light));
+  }
+
+  .price-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .price-original {
+    font-size: 14px;
+    color: var(--text-light);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-now {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--mint-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-now span { font-size: 24px; }
+  .price-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--mint-deep), var(--mint));
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 16px 48px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(74,158,122,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1.05s forwards;
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(74,158,122,0.5);
+  }
+
+  .scroll-hint {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1.2s forwards;
+  }
+  .scroll-hint span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--mint), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 72px 24px; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--mint-deep);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--mint-deep); }
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mint), var(--mint-light));
+    margin-bottom: 28px;
+  }
+
+  /* ── TECH INTRO ── */
+  .tech-section {
+    background: white;
+  }
+  .tech-inner { max-width: 600px; margin: 0 auto; }
+
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--mint-pale);
+    border: 1px solid var(--mint-light);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 12px;
+    color: var(--mint-deep);
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .tech-badge::before { content: '✦'; }
+
+  .tech-description {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-bottom: 32px;
+  }
+
+  .highlight-quote {
+    border-left: 3px solid var(--mint);
+    padding: 16px 20px;
+    background: var(--mint-pale);
+    border-radius: 0 12px 12px 0;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--charcoal);
+    margin-bottom: 32px;
+  }
+  .highlight-quote strong { color: var(--mint-deep); }
+
+  /* ── BENEFITS GRID ── */
+  .benefits-section {
+    background: linear-gradient(180deg, var(--mint-pale) 0%, var(--cream) 100%);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .benefit-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 16px rgba(126,200,164,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .benefit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(126,200,164,0.2);
+  }
+  .benefit-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .benefit-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .benefit-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .benefit-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* ── TECH DEPTH ── */
+  .depth-section { background: var(--charcoal); color: white; }
+  .depth-section .section-label { color: var(--mint-light); }
+  .depth-section .section-title { color: white; }
+  .depth-section .divider { background: linear-gradient(90deg, var(--mint), transparent); }
+
+  .depth-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .depth-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .depth-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--mint-light);
+    min-width: 70px;
+  }
+  .depth-info { flex: 1; }
+  .depth-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .depth-desc { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .depth-track {
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+  .depth-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--mint-deep), var(--mint-light));
+  }
+
+  .no-downtime {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(126,200,164,0.3);
+    border-radius: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .no-downtime p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+  }
+  .no-downtime strong { color: var(--mint-light); }
+
+  /* ── WHY US ── */
+  .why-section { background: white; }
+  .why-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .why-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--mint-pale);
+    border-radius: 16px;
+    border: 1px solid rgba(126,200,164,0.2);
+  }
+  .why-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--mint-light);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .why-content h4 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .why-content p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ── BOOKING FORM ── */
+  .booking-section {
+    background: linear-gradient(160deg, #f0f9f4, #e4f2eb);
+  }
+  .booking-inner { max-width: 540px; margin: 0 auto; }
+
+  .form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 28px;
+    box-shadow: 0 16px 60px rgba(126,200,164,0.18);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mint-deep);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e0ede8;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    background: #fafdfb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--mint);
+    box-shadow: 0 0 0 3px rgba(126,200,164,0.15);
+    background: white;
+  }
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237ec8a4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .time-option {
+    position: relative;
+  }
+  .time-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .time-option label {
+    display: block;
+    text-align: center;
+    padding: 10px 6px;
+    border: 1.5px solid #e0ede8;
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #fafdfb;
+  }
+  .time-option input[type="radio"]:checked + label {
+    border-color: var(--mint-deep);
+    background: var(--mint-pale);
+    color: var(--mint-deep);
+    font-weight: 500;
+  }
+  .time-option label:hover {
+    border-color: var(--mint);
+    background: var(--mint-pale);
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--mint-deep), var(--mint));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(74,158,122,0.35);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+  }
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(74,158,122,0.45);
+  }
+  .form-submit:active { transform: translateY(0); }
+
+  .form-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── SUCCESS ── */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-icon { font-size: 56px; margin-bottom: 16px; }
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--mint-deep);
+    margin-bottom: 12px;
+  }
+  .success-msg p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.6);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  footer .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: white;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  footer p {
+    font-size: 12px;
+    line-height: 2;
+  }
+  footer a { color: var(--mint-light); text-decoration: none; }
+
+  /* ── LOCATION CHIP ── */
+  .location-strip {
+    background: var(--mint-pale);
+    border-top: 1px solid rgba(126,200,164,0.3);
+    border-bottom: 1px solid rgba(126,200,164,0.3);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--mint-deep);
+    font-weight: 500;
+  }
+  .location-strip span { opacity: 0.7; font-weight: 400; color: var(--text-mid); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.4; transform: scaleY(0.7); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="brand-badge">香港中環 · 醫學美容</p>
+  <img src="https://i.ibb.co/placeholder/logo.png" alt="IRISC Styling Beauty" class="hero-logo"
+    onerror="this.style.display='none'; document.querySelector('.hero-logo-text').style.display='block'">
+  <div class="hero-logo-text" style="display:none; font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--mint-deep); letter-spacing:4px; text-align:center; margin-bottom:28px; opacity:0; animation:fadeUp 0.8s ease 0.4s forwards;">IRISC STYLING BEAUTY</div>
+
+  <span class="hero-tag">專利TT中空技術 · 全新升級</span>
+
+  <h1 class="hero-title">
+    MicrosonPen<br>
+    <em>無針埋線緊緻療程</em>
+  </h1>
+
+  <p class="hero-subtitle">
+    告別鬆弛，重塑輪廓<br>
+    無痛 · 無創 · 無恢復期<br>
+    一次療程，即時感受提拉
+  </p>
+
+  <div class="hero-price-card">
+    <p class="price-label">首次體驗限定優惠</p>
+    <p class="price-original">正價 $4,800起</p>
+    <p class="price-now"><span>$</span>1,888</p>
+    <p class="price-desc">全面療程 · 即日預約即享優惠</p>
+  </div>
+
+  <a href="#booking" class="hero-cta">立即預約體驗</a>
+
+  <div class="scroll-hint">
+    <span>了解更多</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- LOCATION STRIP -->
+<div class="location-strip">
+  📍 中環旗艦店 &nbsp;·&nbsp; <span>近中環半山扶手電梯</span>
+</div>
+
+<!-- TECH INTRO -->
+<section class="tech-section">
+  <div class="tech-inner fade-in">
+    <p class="section-label">革新技術</p>
+    <h2 class="section-title">不只係HIFU，<br><em>是下一代緊緻科技</em></h2>
+    <div class="divider"></div>
+
+    <div class="tech-badge">專利TT中空聚焦技術 · MDT多點精準輸出</div>
+
+    <p class="tech-description">
+      MicrosonPen 採用獨有<strong style="color:var(--mint-deep)">TT中空技術</strong>，以筆型探頭將超聲波能量以環狀或單點方式輸出，精準針對1.5mm、3.0mm、4.5mm不同皮膚深度。能量直達<strong style="color:var(--mint-deep)">SMAS筋膜層</strong>，全面刺激膠原蛋白及彈力蛋白再生，效果比傳統HIFU更精準、更舒適。
+    </p>
+
+    <div class="highlight-quote">
+      ✨ <strong>特別適合</strong>想要明顯瘦面提拉效果，但又唔想承受傳統 HIFU / Ultherapy 高痛感及高費用嘅你——<strong>性價比超高，深得客人追捧</strong>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div style="max-width:600px; margin:0 auto;" class="fade-in">
+    <p class="section-label">療程功效</p>
+    <h2 class="section-title"><em>五大核心改善</em></h2>
+    <div class="divider"></div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">✦</span>
+        <p class="benefit-title">即時提拉輪廓</p>
+        <p class="benefit-desc">療程後即見提升，輪廓更分明</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">◎</span>
+        <p class="benefit-title">緊緻鬆弛皮膚</p>
+        <p class="benefit-desc">深層膠原再生，由内而外緊緻</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">◐</span>
+        <p class="benefit-title">改善法令紋</p>
+        <p class="benefit-desc">撫平雙下巴及面部細紋</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">❋</span>
+        <p class="benefit-title">提升膚質</p>
+        <p class="benefit-desc">促進膠原增生，肌膚更透亮</p>
+      </div>
+      <div class="benefit-card full-width">
+        <span class="benefit-icon">○</span>
+        <p class="benefit-title">近乎無痛 · 無恢復期</p>
+        <p class="benefit-desc">痛感遠低於傳統HIFU，療程後可即時上班、化妝，完全融入日常生活</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPTH TECH -->
+<section class="depth-section">
+  <div style="max-width:480px; margin:0 auto;" class="fade-in">
+    <p class="section-label">精準深度技術</p>
+    <h2 class="section-title">三層深度，<em>全面覆蓋</em></h2>
+    <div class="divider"></div>
+
+    <div class="depth-bars">
+      <div class="depth-bar">
+        <p class="depth-label">1.5mm</p>
+        <div class="depth-info">
+          <p class="depth-name">真皮淺層</p>
+          <p class="depth-desc">改善膚質、提亮暗啞、細紋修護</p>
+          <div class="depth-track"><div class="depth-fill" style="width:40%"></div></div>
+        </div>
+      </div>
+      <div class="depth-bar">
+        <p class="depth-label">3.0mm</p>
+        <div class="depth-info">
+          <p class="depth-name">真皮深層</p>
+          <p class="depth-desc">膠原增生、緊緻鬆弛、輪廓提升</p>
+          <div class="depth-track"><div class="depth-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="depth-bar">
+        <p class="depth-label">4.5mm</p>
+        <div class="depth-info">
+          <p class="depth-name">SMAS 筋膜層</p>
+          <p class="depth-desc">深層提拉、重塑面部結構、對抗地心引力</p>
+          <div class="depth-track"><div class="depth-fill" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-downtime">
+      <p>效果於 <strong>一星期後最為顯著</strong><br>
+      建議配合療程組合持續維持效果<br>
+      <strong>無創 · 無須恢復期 · 安全有效</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div style="max-width:540px; margin:0 auto;" class="fade-in">
+    <p class="section-label">為何選擇我們</p>
+    <h2 class="section-title"><em>IRISC</em> 的承諾</h2>
+    <div class="divider"></div>
+
+    <div class="why-cards">
+      <div class="why-card">
+        <p class="why-number">01</p>
+        <div class="why-content">
+          <h4>🏙️ 中環核心地帶，交通極便利</h4>
+          <p>位處香港最旺盛商業區，近中環半山扶手電梯，下班後輕鬆到訪</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <p class="why-number">02</p>
+        <div class="why-content">
+          <h4>🌿 奢華舒適的療程環境</h4>
+          <p>精心打造的療程空間，充滿舒適與放鬆的氛圍，讓你一進入就能自然卸下壓力，享受身心徹底放鬆的療程體驗</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <p class="why-number">03</p>
+        <div class="why-content">
+          <h4>⚡ 專業技術，效果有保障</h4>
+          <p>採用專利TT中空技術，精準能量輸出，效果更顯著，痛感極低，深受客人追捧</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <p class="why-number">04</p>
+        <div class="why-content">
+          <h4>💚 超高性價比體驗</h4>
+          <p>相較傳統HIFU或Ultherapy，以更合理價格，為你帶來專業級的面部提升效果，讓你無需高昂費用也能享受優質療程</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking-section" id="booking">
+  <div class="booking-inner fade-in">
+    <p class="section-label">立即預約</p>
+    <h2 class="section-title">預約你的<br><em>專屬療程時間</em></h2>
+    <div class="divider"></div>
+
+    <div class="form-card">
+      <div id="bookingForm">
+        <div class="form-group">
+          <label class="form-label" for="name">姓名</label>
+          <input class="form-input" type="text" id="name" placeholder="你的名字" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">聯絡電話 / WhatsApp</label>
+          <input class="form-input" type="tel" id="phone" placeholder="例：9123 4567" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="age">年齡層</label>
+          <select class="form-select" id="age">
+            <option value="">請選擇</option>
+            <option>18–24</option>
+            <option>25–34</option>
+            <option>35–44</option>
+            <option>45–54</option>
+            <option>55+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="date">希望預約日期</label>
+          <input class="form-input" type="date" id="date" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">希望預約時間</label>
+          <div class="time-grid">
+            <div class="time-option">
+              <input type="radio" name="time" id="t1" value="11:00">
+              <label for="t1">11:00am</label>
+            </div>
+            <div class="time-option">
+              <input type="radio" name="time" id="t2" value="12:30">
+              <label for="t2">12:30pm</label>
+            </div>
+            <div class="time-option">
+              <input type="radio" name="time" id="t3" value="14:00">
+              <label for="t3">2:00pm</label>
+            </div>
+            <div class="time-option">
+              <input type="radio" name="time" id="t4" value="15:30">
+              <label for="t4">3:30pm</label>
+            </div>
+            <div class="time-option">
+              <input type="radio" name="time" id="t5" value="17:00">
+              <label for="t5">5:00pm</label>
+            </div>
+            <div class="time-option">
+              <input type="radio" name="time" id="t6" value="18:30">
+              <label for="t6">6:30pm</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="concern">主要肌膚煩惱（選填）</label>
+          <select class="form-select" id="concern">
+            <option value="">請選擇</option>
+            <option>面部鬆弛下垂</option>
+            <option>輪廓不清晰 / 雙下巴</option>
+            <option>法令紋明顯</option>
+            <option>膚質暗啞粗糙</option>
+            <option>初老、預防鬆弛</option>
+          </select>
+        </div>
+
+        <button class="form-submit" onclick="handleSubmit()">
+          確認預約 · 首次體驗 $1,888
+        </button>
+
+        <p class="form-note">
+          預約日期及時間以專人確認為準<br>
+          我們會於24小時內透過 WhatsApp 聯絡你
+        </p>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">🌿</div>
+        <h3>預約申請已收到！</h3>
+        <p>
+          感謝你選擇 IRISC Styling Beauty<br>
+          我們會盡快透過 WhatsApp 聯絡你確認時間<br><br>
+          <strong style="color:var(--mint-deep)">期待在中環與你相見 ✨</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">IRISC STYLING BEAUTY</p>
+  <p>
+    📍 香港中環（近中環半山扶手電梯）<br>
+    🕐 營業時間：星期一至日 11:00am – 8:00pm<br>
+    💬 <a href="https://wa.me/85200000000">WhatsApp 查詢</a>
+  </p>
+  <p style="margin-top:20px; font-size:11px; opacity:0.4;">
+    © 2025 IRISC Styling Beauty Limited. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Set min date to today
+  const dateInput = document.getElementById('date');
+  const today = new Date();
+  dateInput.min = today.toISOString().split('T')[0];
+
+  // Form submit
+  function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.querySelector('input[name="time"]:checked');
+
+    if (!name || !phone || !date || !time) {
+      alert('請填寫姓名、電話、日期並選擇時間 😊');
+      return;
+    }
+
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+
+    // You can wire up to Google Sheets / backend here
+    console.log('Booking:', { name, phone, date, time: time.value });
+  }
+</script>
+</body>
+</html>
