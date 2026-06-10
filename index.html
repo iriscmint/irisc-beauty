@@ -640,7 +640,8 @@
 <!-- HERO -->
 <section class="hero">
   <p class="brand-badge">香港中環 · 醫學美容</p>
-  <img src="logo.jpg" alt="IRISC Styling Beauty" class="hero-logo">
+  <img src="logo.jpg" alt="IRISC Styling Beauty" class="hero-logo" onerror="this.src='logo.JPG'; this.onerror=function(){this.style.display='none'; document.getElementById('logoText').style.display='block'}">
+  <div id="logoText" style="display:none; font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300; color:var(--mint-deep); letter-spacing:4px; text-align:center; margin-bottom:28px;">IRISC STYLING BEAUTY</div>
 
   <span class="hero-tag">專利TT中空技術 · 全新升級</span>
 
@@ -670,10 +671,7 @@
   </div>
 </section>
 
-<!-- LOCATION STRIP -->
-<div class="location-strip">
-  📍 中環旗艦店 &nbsp;·&nbsp; <span>近中環半山扶手電梯</span>
-</div>
+
 
 <!-- TECH INTRO -->
 <section class="tech-section">
@@ -845,41 +843,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="date">希望預約日期</label>
-          <input class="form-input" type="date" id="date" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">希望預約時間</label>
-          <div class="time-grid">
-            <div class="time-option">
-              <input type="radio" name="time" id="t1" value="11:00">
-              <label for="t1">11:00am</label>
-            </div>
-            <div class="time-option">
-              <input type="radio" name="time" id="t2" value="12:30">
-              <label for="t2">12:30pm</label>
-            </div>
-            <div class="time-option">
-              <input type="radio" name="time" id="t3" value="14:00">
-              <label for="t3">2:00pm</label>
-            </div>
-            <div class="time-option">
-              <input type="radio" name="time" id="t4" value="15:30">
-              <label for="t4">3:30pm</label>
-            </div>
-            <div class="time-option">
-              <input type="radio" name="time" id="t5" value="17:00">
-              <label for="t5">5:00pm</label>
-            </div>
-            <div class="time-option">
-              <input type="radio" name="time" id="t6" value="18:30">
-              <label for="t6">6:30pm</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
           <label class="form-label" for="concern">主要肌膚煩惱（選填）</label>
           <select class="form-select" id="concern">
             <option value="">請選擇</option>
@@ -892,12 +855,13 @@
         </div>
 
         <button class="form-submit" onclick="handleSubmit()">
-          確認預約 · 首次體驗 $1,888
+          下一步：選擇預約時間 · $1,888
         </button>
 
         <p class="form-note">
-          預約日期及時間以專人確認為準<br>
-          我們會於24小時內透過 WhatsApp 聯絡你
+          預約日期及時間以專人確認為準，<br>
+          我們將於 24 小時內透過 WhatsApp 聯絡你。<br><br>
+          <strong style="color:var(--mint-deep)">＊ 本店只接受最少 48 小時前預約。</strong>
         </p>
       </div>
 
@@ -939,33 +903,27 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Set min date to today
-  const dateInput = document.getElementById('date');
-  const today = new Date();
-  dateInput.min = today.toISOString().split('T')[0];
-
   // Form submit
   function handleSubmit() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    const date = document.getElementById('date').value;
-    const time = document.querySelector('input[name="time"]:checked');
 
-    if (!name || !phone || !date || !time) {
-      alert('請填寫姓名、電話、日期並選擇時間 😊');
+    if (!name || !phone) {
+      alert('請填寫姓名同電話 😊');
       return;
     }
 
-    document.getElementById('bookingForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+    const concern = document.getElementById('concern').value;
+    const age = document.getElementById('age').value;
 
+    // Save info to Google Sheets
     const formData = {
       name: name,
       phone: phone,
-      age: document.getElementById('age').value,
-      date: date,
-      time: time.value,
-      concern: document.getElementById('concern').value
+      age: age,
+      date: '',
+      time: '',
+      concern: concern
     };
 
     fetch('https://script.google.com/macros/s/AKfycbwEdtIjcve3p9DY45IfTB01XrUzrFi_BOWDN30_jzu9j2xAvZTa4shq78wdmIF_tuiqpw/exec', {
@@ -974,6 +932,13 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
+
+    // Open Calendly with prefilled name & email
+    const calendlyUrl = `https://calendly.com/iriscbeauty/new-meeting?name=${encodeURIComponent(name)}&a1=${encodeURIComponent(phone)}`;
+    window.open(calendlyUrl, '_blank');
+
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
   }
 </script>
 </body>
